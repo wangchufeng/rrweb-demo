@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/rrweb@latest/dist/rrweb.min.css" />
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/rrweb-player@latest/dist/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/rrweb@0.7.0/dist/rrweb.min.js"></script>
+    <script>
+        fetch('/getEvents', {
+            method: 'GET',
+        }).then(res => res.json()).then((data) => {
+            console.log(data);
+            const events = data;
+            const replayer = new rrweb.Replayer(events);
+            replayer.play();            
+
+            // new rrwebPlayer({
+            //     target: document.body, // 可以自定义 DOM 元素
+            //     data: {
+            //         data:data,
+            //     },
+            // });
+        });
+    </script>
+</body>
+
+</html>
